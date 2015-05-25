@@ -1,7 +1,50 @@
 doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+head
+    title Gherosn employees
+    |     &#x9;
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    |     &#x9;
+    |     &#x9;
+    link(href='//fonts.googleapis.com/css?family=Open+Sans:400,400italic,600italic,600,700italic,700', rel='stylesheet', type='text/css')
+    |     &#x9;
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    |     &#x9;
+    |     &#x9;
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.2/angular.min.js')
+    | &#x9;&#x9;
+    script(src='//ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.2/angular-route.min.js')
+    | &#x9;&#x9;
+    script(src='//cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.1.5/angular-local-storage.min.js')
+    | &#x9;&#x9;
+    script(src='//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')
+    | &#x9;&#x9;
+    | &#x9;&#x9;
+    script(src='/javascripts/myWebSite.js')
+    | &#x9;&#x9;
+    script(src='/javascripts/directives/angular.editInPlace.js')
+    | &#x9;&#x9;
+    script(src='/javascripts/directives/angular.ngEnter.js')
+    | &#x9;&#x9;
+  body(data-ng-app='myWebSite' ng-controller='homeController')
+    h1 List of employees [ {{ employees.length }} ]
+    p
+      | Please use this AngularJS App to search for employees contact details. You can search by name, extension or role/dept.
+    br
+    input#searchField(type='text', data-ng-model='qstring', placeholder='filter employees...')
+    input#resetBtn.success(type='submit', value='clear', ng-click='qstring = null')
+    br
+    br
+    table
+      tr
+        th
+          strong Name
+        th Extension
+        th Role / Dept
+        th Email
+      tr(data-ng-repeat="employee in employees | filter:qstring | orderBy:'name'")
+        td
+          strong {{ employee.name }}
+        td(align='center') {{ employee.phone }}
+        td {{ employee.role }}
+        td
+          a(href='mailto:{{ employee.email }}')  {{ employee.email }}

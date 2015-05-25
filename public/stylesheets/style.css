@@ -1,8 +1,136 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	position: relative;
+	margin: 0;
 }
 
-a {
-  color: #00B7FF;
+p, th, td {
+	line-height: 18px;
+}
+
+h1 {
+	font-size: 24px;
+	line-height: 28px;
+}
+
+section {
+	margin: 0 20px;
+	padding-bottom: 40px;
+}
+
+input[type="text"], input[type="number"] {
+    width: 150px;
+    display: inline-block;
+    background-color: #FFFECC;
+    padding: 5px 5px;
+    border: 1px solid #ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+
+}
+
+input[type="submit"] {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f29c93;
+	box-shadow:inset 0px 1px 0px 0px #f29c93;
+	background-color:#f51900;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:15px;
+	line-height: 24px;
+	height: 26px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #b23e35;
+	border: none;
+	margin-left: 6px;
+}
+
+	
+input[type="submit"]:hover {
+	background-color:#ce0100;
+}
+
+input[type="submit"]:active {
+	position:relative;
+	top:1px;
+}
+
+
+input[type="text"], input[type="submit"] {
+	float: left;
+}
+
+table th {
+	background: #efefef;
+}
+
+table th, table td {
+	padding: 2px 20px;
+	margin: 2px;
+	border-radius: 4px;
+}
+
+table tr:nth-child(odd){ 
+	background: #FFF9F9;
+}
+
+
+p#by {
+	text-align: center;
+	padding: 0;
+	position: fixed;
+	bottom: 0;
+	color: white;
+	/* display: block; */
+	background: green;
+	margin: 0;
+	width: 100%;
+	font-size: 11px;
+	line-height: 11px
+	font-weight: 100;
+}
+
+/* Shopping list styles */
+
+ul.shoppingList li {
+	padding-bottom:3px;
+	margin-bottom: 5px;
+}
+
+.itemName{
+	font-size: 14px;
+}
+
+.addBtn {
+	padding: 6px 8px 6px;
+	border-radius: 4px;
+	border: 0 none;
+	margin-left: 5px;
+}
+
+.edit-in-place span {
+  cursor: pointer;
+}
+
+.edit-in-place input {
+  display: none;
+}
+
+.edit-in-place.active span {
+  display: none;
+}
+
+.edit-in-place.active input {
+  display: inline-block;
+}
+
+.strike {
+  text-decoration: line-through;
 }

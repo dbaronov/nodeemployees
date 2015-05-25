@@ -5,8 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
+
 
 var app = express();
 
@@ -14,8 +13,23 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// adding mongoose
-var mongoose = require( 'mongoose' );
+ //adding mongoose
+var mongoose = require('mongoose');
+
+// Mongoose connection to MongoDB (ted/ted is readonly)
+mongoose.connect('mongodb://localhost/myemployees', function (error) {
+    if (error) {
+        console.log(error);
+    }
+});
+
+var models = {
+    employees: require('./models/myemployees')(mongoose),
+    //employees: require('./models/myemployees')(mongoose)
+}
+
+var routes = require('./routes/index')(models);
+var users = require('./routes/users');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
@@ -39,25 +53,25 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
-  });
-}
+//if (app.get('env') === 'development') {
+//  app.use(function(err, req, res, next) {
+//    res.status(err.status || 500);
+//    res.render('error', {
+//      message: err.message,
+//      error: err
+//    });
+//  });
+//}
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
-});
+//app.use(function(err, req, res, next) {
+//  res.status(err.status || 500);
+//  res.render('error', {
+//    message: err.message,
+//    error: {}
+//  });
+//});
 
 
 module.exports = app;
