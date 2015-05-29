@@ -36,9 +36,6 @@ myWebSite.controller('listController', ['$scope', '$http', function($scope, $htt
 	
 }]);
 
-
-angular.bootstrap(document.body, ['myWebSite']);
-
 myWebSite.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider.
